@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta content="Ziomara" name="author">
+	<meta content="OVI Vinculacion a BD usando PHP" name="description">
+	<meta content="Vinculacion, BD, PHP" name="keywords"> 
+
+	<title>OVI Vinculacion a BD usando PHP | Ziomara | UNAD</title>
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/estilo.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+	<link rel="shortcut icon" href="http://datateca.unad.edu.co/ayuda/theme/grisAzul/img/favicon.png" />
+
+	<link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+	
+</head>
+<body>
+	<header>
+		<div class="contenedor">
+	
+	<picture>
+		<img
+		sizes="(max-width: 600px) 100vw, 600px"
+		srcset="
+		img/enc_u0ajk3_c_scale,w_200.png 200w,
+		img/enc_u0ajk3_c_scale,w_509.png 509w,
+		img/enc_u0ajk3_c_scale,w_600.png 600w"
+		src="img/enc_u0ajk3_c_scale,w_600.png"
+		alt="">
+	</picture>
+
+	<div id="container">
+	
+		<img class="slides" src="slider/imagen_index.jpg">
+	</div>
+
+		<div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="#">Lecturas</a>
+	 
+					<div>
+						 <ul>
+							<li class="titulo naranja"><a href="conexion.html">Conexión a BD</a></li>
+							<li class="titulo verde"><a href="insercion.html">Inserciones</a></li>
+							<li class="titulo rojo"><a href="consulta.html">Consultas</a></li>
+							<li class="titulo azul"><a href="modificacion.html">Modificaciones</a></li>
+							<li class="titulo negro"><a href="eliminacion.html">Eliminaciones</a></li>
+						</ul>
+						
+					</div>
+	 
+					</li>
+					<li><a href="#">Multimedia</a>
+						<div>
+							<ul>
+								<li class="titulo naranja"><a href="multimedia.html">Conceptos</a></li>
+								<li class="titulo verde"><a href="multimedia1.html">Conexión</a></li>	
+							</ul>
+						</div>
+					</li>
+					<li><a href="#">Actividades</a>
+						<div>
+						 <ul>
+							<li class="titulo naranja"><a href="actividades.html">Cuestionario Conceptos</a></li>
+							<li class="titulo verde"><a href="verdadero.html">Sopa de letras</a></li>
+							<li class="titulo azul"><a href="actividad3.html">Relacionar</a></li>
+						</ul>
+						
+					</div>
+					</li>
+					<li><a href="participantes.html">Participantes</a></li>
+					
+				</ul>
+			</nav>
+		</div>
+	</header>
+	
+	<br>
+	<section>
+		<div>
+			<p><h2>Consultas a la base de datos</h2>
+				<br><br>
+				Para realizar una consulta utilizaremos la función mysqli_query() en la 
+				que indicaremos la consulta que queremos hacer.
+				<br><br>
+				Vamos a guardar la consulta en una variable y así la podremos reutilizar sin problemas:
+				<br><br>
+				<pre>
+					$consulta = "SELECT * FROM alumnos";
+				</pre>
+				La consulta anterior nos devolverá todos los registro de la tabla «alumnos».
+				Pero aún no hemos realizado la consulta, ahora debemos utilizar la función mysqli_query()
+				<br><br>
+				<pre>
+					$resultado = mysqli_query( $conexion, $consulta );
+				</pre>
+			</p>
+			<h2>Mostar los datos consultados</h2>
+			<p>
+				<br><br>
+				Creamos la tabla en el PHP:
+				<br><br>
+				<pre>
+					echo "&lt;table borde='2'&gt;";
+					echo "&lt;tr&gt;";
+					echo "&lt;th&gt;Nombre&lt;/th&gt;";
+					echo "&lt;th&gt;Edad&lt;/th&gt;";
+					echo "&lt;/tr&gt;";
+				</pre>
+				Ahora utilizamos un While mientras existan registros y 
+				dentro del bucle creamos las filas de la tabla:
+				<br><br>
+				<pre>
+				while ($columna = mysqli_fetch_array( $resultado ))
+				{
+					echo "&lt;tr&gt;";
+					echo "&lt;td&gt;" 
+						$columna['nombre'] . "&lt;/td&gt;&lt;td&gt;" . $columna['edad']
+					echo "&lt;/td&gt;";
+					echo "&lt;/tr&gt;";
+				}
+				</pre>
+				Despues cerramos la tabla y ya estaria:
+				<pre>
+					echo "&lt;/table&gt;";
+				</pre>
+			</p> 
+			<br>
+			<h2>Referencias</h2>
+			<cite>
+				<ul>
+					<li>Folgueira, O. (2017). Conectar a una Base de Datos MySQL desde PHP. Retrieved from http://www.oscarabadfolgueira.com/conectar-una-base-datos-mysql-desde-php/</li>
+					<li>(2012). [Image]. Retrieved from http://mysqlbasicoo.blogspot.com/2012/03/consultas-con-el-comando-join.html</li>
+					<li>(2012). [Image]. Retrieved from http://easy-codigo.blogspot.com/2012/06/consultas-en-mysql-y-php.html</li>
+				</ul>
+			</cite> 
+		</div>
+	</section>
+
+	<aside>
+		<div>
+			<img src="img/lectura5.png" width=400 height=300>
+		</div>
+		
+		<div>
+			<img src="img/lectura6.jpg" width=400 height=300>
+		</div>
+	</aside>
+
+	<footer>
+		<section id=sectionFooter>
+			<div><b><font color="#F47920" >CONCEPTO</font>  DE OVI</b></div>
+			<hr style="color: #0056b2;" /><br>
+			<p align=justify padding-top= 10px >Se define un objeto virtual informativo como un conjunto de recursos digitales que puede ser utilizado en diversos contextos educativos y que posee una estructura de información externa (metadato) para facilitar su almacenamiento, identificación y recuperación.
+			</p>
+		</section>
+
+		<section id=sectionFooter>
+			<div><b><font color="#F47920" >ENLACES</font>  DE INTERÉS</b></div>
+			<hr style="color: #0056b2;" /><br>
+			<div >
+			 	<a href="http://agenda.unad.edu.co/" class="txtlink2">Agenda institucional</a><br>
+			 	<a href="https://informacion.unad.edu.co/ninos" class="txtlink2">Portal de Niños</a><br>
+			 	<a href="http://ofertaslaborales.unad.edu.co/" class="txtlink2">Portal Laboral</a><br>
+			 	<a href="https://campus0b.unad.edu.co/campus0/login/index.php" class="txtlink2">Campus Virtual</a>
+			</div>
+				
+		</section>
+
+		<section id=sectionFooter>
+			<div><b><font color="#F47920" >ESTUDIE</font> EN LA UNAD</b></div>
+			<hr style="color: #0056b2;" /><br>
+			<div >
+			 	<a href="https://www.unad.edu.co/carreras" class="txtlink2">Programas Académicos</a><br>
+			 	<a href="http://estudios.unad.edu.co/alfabetizacion-primaria-y-bachillerato" class="txtlink2">Alfabetización</a><br>
+			 	<a href="http://estudios.unad.edu.co/diplomados-cursos-congresos" class="txtlink2">Diplomados y Cursos</a><br>
+			 	<a href="http://estudios.unad.edu.co/unad-english" class="txtlink2">UNAD English</a>
+			</div>
+		</section>
+
+		<section id=sectionFooter>
+			<div><b><font color="#F47920" >CEAD</font> BUCARAMANGA</b></div>
+			<hr style="color: #0056b2;" /><br>
+			
+			<p align=justify padding-top= 10px >Carrera 27 # 40 - 43 
+			</p>
+			
+			<p align=justify padding-top= 10px >Tel: (57) 6358577 
+			</p>
+			
+			<p align=justify padding-top= 10px >Fax: (57) 6358332
+			</p>
+			
+			<p align=justify padding-top= 10px >Fax: (57) 6358332
+			</p>
+			
+		 	<a href="bucaramanga@unad.edu.co" class="txtlink2">bucaramanga@unad.edu.co</a><br><br>
+		 	<img src="https://www.unad.edu.co/templates/unad2015home/images/logoUNADgrisInferior.png" alt="">
+		</section>
+	</footer>
+	<div id="linksinteres">
+
+				<a href="http://www.mineducacion.gov.co/" target="_blank"><img src="https://www.unad.edu.co/templates/unad2015home/images/logos_gob/u_mineducacionLogo.png" alt="Gesti&oacute;n y Seguimiento a las metas del Gobierno" /></a>
+
+            	<a href="http://www.colombiacompra.gov.co/" target="_blank"><img src="https://www.unad.edu.co/templates/unad2015home/images/logos_gob/u_logo_secop.png" alt="Portal &Uacute;nico de Contrataci&oacute;n" /></a>
+            	<a href="http://www.icetex.gov.co/" target="_blank"><img src="https://www.unad.edu.co/templates/unad2015home/images/logos_gob/u_icetexLogo.png" alt="ICETEX"   /></a>
+            
+           		<a href="http://www.colombiaaprende.edu.co/" target="_blank"><img src="https://www.unad.edu.co/templates/unad2015home/images/logos_gob/u_colombiaAprende.png" alt="Colombia Aprende" /></a>
+           
+            	<a href="http://www.fondoemprender.com/" target="_blank"><img src="https://www.unad.edu.co/templates/unad2015home/images/logos_gob/u_fondoEmprender.png" alt="Fondo Emprender" /></a>
+       
+            	<a href="http://www.gobiernoenlinea.gov.co/" target="_blank"><img src="https://www.unad.edu.co/templates/unad2015home/images/logos_gob/u_gobiernoEnLinea.png" alt="Gobierno en L&iacute;nea" /></a>
+           	
+            	<a href="http://www.urnadecristal.gov.co/" target="_blank"><img src="https://www.unad.edu.co/templates/unad2015home/images/logos_gob/u_urnaDeCristalGris.png" alt="Urna de Cristal" /></a></div>
+</body>
+<script src="js/modernizr.js"></script>
+<script src="js/prefixfree.min.js"></script>
+<script src="js/jquery-3.2.1.slim.js"></script>
+
+</html>
